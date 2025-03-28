@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SignalR Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+</head>
+<body>
+    <h1>Live Trade Updates</h1>
+    <div id="output"></div>
+
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("https://localhost:7147/tradehub") // Change if running on a different port
+            .configureLogging(signalR.LogLevel.Information)
+            .withAutomaticReconnect()
+            .build();
+
+        connection.on("ReceiveTrade", trade => {
+            console.log("Trade received:", trade);
+            document.getElementById("output").innerHTML += `<p>${trade.tickerSymbol}: ₹ ${trade.price} (${trade.quantity} shares)</p>`;
+        });
+
+        connection.start()
+            .then(() => console.log("Connected to SignalR Hub!"))
+            .catch(err => console.error("Error connecting:", err));
+    </script>
+</body>
+</html>

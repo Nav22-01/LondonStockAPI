@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "X8C9POKvFKV0uLATz1vuJlH+rc0ict7N4OZxbqg1j1g=",
+  "Source": "LondonStockAPI",
+  "BasePath": "_content/LondonStockAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
